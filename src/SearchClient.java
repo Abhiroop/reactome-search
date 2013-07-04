@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,21 +13,25 @@ public class SearchClient
 	{
 		obj=new EBeyeClient();
 	}
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception
 	{
-        if (args.length == 0) {
+        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+        String query=br.readLine();
+        String trimmed = query.trim();
+        int words = trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length;
+        String[] desc=trimmed.split("\\s+");
+		if (words == 0) {
             throw new IllegalArgumentException("Please pass in a search term or sequence");
         }
 
-        String query = args[0];
         boolean includeDescription = false;
-        if (args.length > 1) {
-            includeDescription = Boolean.valueOf(args[1]);
+        if (words > 1) {
+            includeDescription = Boolean.valueOf(desc[1]);
         }
 
        SearchClient search = new SearchClient();
 
-        // TODO: Add paging and get input from keyboard to show next page
+    
         Page page = search.search(query, 1, 10, includeDescription);
         List<Record> records = page.getRecords();
 
