@@ -15,8 +15,9 @@ public class RESTRequest
 * @return JSON response
 * @throws IOException
 */
-	public static String httpGet(String urlStr) throws IOException 
+	public static void main (String[]args) throws IOException 
 	{
+		String urlStr="http://reactomews.oicr.on.ca:8080/ReactomeRESTfulAPI/RESTfulWS/queryById/Pathway/109581";
 		URL url = new URL(urlStr);
 		HttpURLConnection conn =(HttpURLConnection) url.openConnection();
 		conn.addRequestProperty("Accept", "application/json");
@@ -36,7 +37,7 @@ public class RESTRequest
 		rd.close();
 
 		conn.disconnect();
-		return sb.toString();
+		System.out.println(sb.toString());
 	}
 
 /**
