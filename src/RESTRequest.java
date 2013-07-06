@@ -62,7 +62,6 @@ public class RESTRequest
 		conn.setUseCaches(false);
 		conn.setAllowUserInteraction(false);
 		conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-		// conn.addRequestProperty("Accept", "application/json");
 		// Create the form content
 		OutputStream out = conn.getOutputStream();
 		Writer writer = new OutputStreamWriter(out, "UTF-8");
