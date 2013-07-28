@@ -1,12 +1,22 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+/*
+ * Below is the EBI search client for Reactome which given a user input
+ * for a Reaction or pathway or disease returns the corresponding reactome id
+ * as per the EBI search engine.
+ */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.rpc.ServiceException;
+/**
+ * EBI Search web service client.
+ *
+ * @author Abhiroop Sarkar
+ * @version 1.0
+ * GSOC 2013 Project
+ */
 public class SearchClient 
 {
+	// "Domain" in this sense means the name of the index in the EBI search engine
 	String domain_name="reactome";
 	EBeyeClient obj;
 	public SearchClient()
@@ -15,8 +25,11 @@ public class SearchClient
 	}
 	public static void main(String[] args) throws Exception
 	{
-        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
-        String query=br.readLine();
+        String query="";
+        for(int z=0;z<args.length;z++)
+        {
+        	query=query+args[z]+" ";
+        }
         String trimmed = query.trim();
         int words = trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length;
         String[] desc=trimmed.split("\\s+");
