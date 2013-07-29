@@ -1,3 +1,8 @@
+/*
+ * Below is the client to access the data from the local machine through
+ * the Reactome Java API. Given a particular query it extracts the
+ * Reactions, Pathways and Diseases and presents the results to the console.
+ */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -7,7 +12,13 @@ import java.util.List;
 import org.gk.model.GKInstance;
 import org.gk.model.ReactomeJavaConstants;
 import org.gk.persistence.MySQLAdaptor;
-
+/**
+ * Client for accessing data through the Reactome Java API.
+ *
+ * @author Abhiroop Sarkar
+ * @version 1.0
+ * GSOC 2013 Project
+ */
 
 public class DataAccess 
 {
